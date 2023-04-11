@@ -30,7 +30,7 @@ export const TodoList = () => {
     },
   ]);
 
-  const [inputText, setInputText] = useState("");]
+  const [inputText, setInputText] = useState("");
 
   const handleToggle = (id: number) => {
     setTodos(
@@ -59,7 +59,7 @@ export const TodoList = () => {
         ))}
       </ul>
       <input type="text" placeholder="Add todo Item" onChange={(e)=> setInputText(e.currentTarget.value)} />
-      <button onClick={}>Add Item</button>
+      <button onClick={handleClick}>Add Item</button>
     </div>
   );
 };
