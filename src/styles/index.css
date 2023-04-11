@@ -1,3 +1,17 @@
+/* Font */
+@font-face {
+  font-family: 'SF Pro Text';
+  src: url('https://fonts.googleapis.com/css2?family=SF+Pro+Text:wght@400;500;600&display=swap');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* TailWind imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Modify Input boxes */
+input:focus {
+  outline:none;
+}
