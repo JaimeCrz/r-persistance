@@ -34,7 +34,6 @@ export const TodoList = () => {
   };
 
   const handleClick = () => {
-    
     const newTodos: item = {
       id: Date.now(),
       text: inputText,
@@ -42,6 +41,17 @@ export const TodoList = () => {
     };
     setTodos([...todos, newTodos]);
   };
+    
+  // filter() or reduce() this creates a new array of todos, while splice it doesn't modify or create a new one.
+
+  const handleDelete = (id: number) => {
+    const index: number = todos.findIndex(todo => todo.id === id);
+    if(index > -1) {
+        console.log(todos)
+        todos.splice(index, 1);
+    }
+    setTodos(todos);
+};
 
   return (
     <div className="main flex flex-col items-center justify-center h-screen font-sfpro">
@@ -61,7 +71,29 @@ export const TodoList = () => {
                   checked={todo.completed}
                   onChange={() => handleToggle(todo.id)}
                 />
-                <span className="text-white font-medium">{todo.text}</span>
+                <span className="text-white font-medium p-2">{todo.text}</span>
+                <button
+                  type="button"
+                  className="bg-red-700 rounded-md p-0 inline-flex items-center justify-center text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                  onClick={() => handleDelete(todo.id)}
+                >
+                  <span className="sr-only">Delete</span>
+                  <svg
+                    className="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
               </li>
             </>
           ))}
