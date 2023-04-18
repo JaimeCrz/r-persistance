@@ -43,7 +43,6 @@ export const TodoList = () => {
   };
     
   // filter() or reduce() this creates a new array of todos, while splice it doesn't modify or create a new one.
-
   const handleDelete = (id: number) => {
     const index: number = todos.findIndex(todo => todo.id === id);
     if(index > -1) {
@@ -52,6 +51,12 @@ export const TodoList = () => {
     }
     setTodos(todos);
 };
+
+const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.code === "Enter") {
+        handleClick()
+    }
+  };
 
   return (
     <div className="main flex flex-col items-center justify-center h-screen font-sfpro">
@@ -104,6 +109,7 @@ export const TodoList = () => {
             type="text"
             placeholder="Add todo Item"
             onChange={(e) => setInputText(e.currentTarget.value)}
+            onKeyDown={handleKeyPress}
           />
           <button
             className="flex-none bg-gray-500 hover:bg-gray-700 font-bold py-2 px-4 rounded-r-lg"
