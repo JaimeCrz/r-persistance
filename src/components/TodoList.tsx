@@ -46,7 +46,6 @@ export const TodoList = () => {
   const handleDelete = (id: number) => {
     const index: number = todos.findIndex(todo => todo.id === id);
     if(index > -1) {
-        console.log(todos)
         todos.splice(index, 1);
     }
     setTodos(todos);
